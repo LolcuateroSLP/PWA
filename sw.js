@@ -1,5 +1,5 @@
 //IMPORTS
-importScripts('/js/sw-util.js');
+importScripts('js/sw-util.js');
 
 const CACHE_STATIC_NAME  = 'static-v1';
 const CACHE_DYNAMIC_NAME = 'dynamic-v1';
@@ -60,16 +60,19 @@ self.addEventListener('activate',e=>{
 });
 
 self.addEventListener('fetch',e=>{
+
     const respuesta = caches.match(e.request).then(res=>{
         if(res){
             return res;
         }else{
+
             return fetch(e.request).then(newRes =>{
                 return actualizaCacheDinamico(CACHE_DYNAMIC_NAME,e.request,newRes);
-            })
+            });
+
         }
         
     });
 
-    respondWith(respuesta);
+    e.respondWith(respuesta);
 })
