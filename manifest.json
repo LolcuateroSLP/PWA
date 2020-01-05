@@ -3,8 +3,10 @@
     "name": "Aplicacion de prueba",
     "start_url": "index.html",
     "background_color": "#3598db",
+    "theme-color": "#3598db",
     "display": "standalone",
     "orientation":"portrait",
+
     "icons": [
         {
             "src": "img/icons/icon-72x72.png",
